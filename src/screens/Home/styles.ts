@@ -233,7 +233,7 @@ export const MiddlePresentation = styled.section`
     }
     p {
       margin-top: 16px;
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 `;
@@ -259,7 +259,7 @@ export const FooterPresentation = styled.section`
     }
     p {
       margin-top: 16px;
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 `;
