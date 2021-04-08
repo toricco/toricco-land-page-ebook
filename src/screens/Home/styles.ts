@@ -10,6 +10,8 @@ export const Container = styled.main`
     justify-content: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 `;
 export const Backgroundpath = styled.div`
@@ -29,6 +31,9 @@ export const PresentationContainer = styled.section`
   max-width: 1200px;
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 1200px) {
+    padding: 0 5%;
+  }
   @media screen and (max-width: 1070px) {
     flex-direction: column;
   }
@@ -45,7 +50,6 @@ export const Presentation = styled.div`
     justify-content: center;
     align-items: center;
     display: flex;
-    padding: 5%;
   }
 `;
 
@@ -109,7 +113,8 @@ export const FormContent = styled.div`
   padding: 5%;
   border-radius: 24px;
   width: 440px;
-
+  display: flex;
+  flex-direction: column;
   @media screen and (max-width: 1070px) {
     margin: 15px auto;
   }
@@ -230,30 +235,40 @@ export const MiddlePresentation = styled.section`
     h3 {
       margin-top: 32px;
       font-size: 32px;
+      span {
+        color: rgb(110, 120, 250);
+      }
     }
     p {
       margin-top: 16px;
       font-size: 20px;
+      max-width: 850px;
     }
   }
 `;
 
 export const FooterPresentation = styled.section`
-  @media screen and (max-width: 1070px) {
-    flex-direction: column;
-    div {
-      width: 100%;
-    }
+  @media screen and (max-width: 1200px) {
+    padding: 0 5%;
   }
-
+  @media screen and (max-width: 1070px) {
+    margin: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+  width: 100%;
   margin: 50px auto;
   margin-top: 100px;
   max-width: 1200px;
   display: flex;
+
   div {
     width: 600px;
-    margin: 0 auto;
     color: #fff;
+    @media screen and (max-width: 1070px) {
+      width: 100%;
+    }
+
     h3 {
       font-size: 32px;
     }
@@ -265,6 +280,8 @@ export const FooterPresentation = styled.section`
 `;
 
 export const ImgEbookDigital = styled.img`
+  width: 500px;
+  height: 374px;
   @media screen and (max-width: 1070px) {
     margin-left: -100px;
     margin-top: 24px;
@@ -272,14 +289,14 @@ export const ImgEbookDigital = styled.img`
 
   @media screen and (max-width: 700px) {
     width: 450px;
+    height: 337px;
     margin: 0 auto;
-    margin-left: 8%;
   }
 
   @media screen and (max-width: 500px) {
     width: 350px;
+    height: 262px;
     margin: 0 auto;
-    margin-left: 8%;
   }
 `;
 
@@ -296,7 +313,6 @@ export const FooterContent = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   @media screen and (max-width: 1070px) {
     flex-direction: column;
     p {

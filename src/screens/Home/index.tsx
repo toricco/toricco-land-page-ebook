@@ -10,6 +10,7 @@ import {
   LogoFooter,
   IconFace,
   IconInstagran,
+  Checked,
 } from '../../assets/images';
 import Button from '../../components/Button';
 
@@ -68,9 +69,10 @@ const Home = (): JSX.Element => {
               Como conquistar uma vida financeira saudável
             </S.TitleEbook>
             <S.Description>
-              Mais de 250 páginas de pura estratégia para o melhorar a sua saúde
-              financeira, com muito auxilio de pessoas especializadas na área.
-              <span>Baixe o seu agora !</span>
+              Em apenas 15 páginas te damos o passo a passo para que você
+              consiga mudar sua relação com o dinheiro e conquistar estabilidade
+              em suas finanças.
+              <span>Baixe agora a versão em PDF!</span>
             </S.Description>
             <S.ImgEbookAndCell
               src={ebookAndCell}
@@ -141,47 +143,57 @@ const Home = (): JSX.Element => {
         </S.PresentationContainer>
         <S.MiddlePresentation>
           <div>
-            <h3>O que são as clínicas digitais ?</h3>
+            <h3>
+              Você quer saber <span>como</span> conquistar uma vida financeira
+              <span> saudável</span> ?
+            </h3>
             <p>
-              O mundo está cada vez mais digital. As novas tecnologias estão
-              invadindo com velocidade recorde os diferentes mercados. Nesse
-              processo, elas transformam as relações humanas e as formas de
-              consumo de serviços em todas as áreas.
-            </p>
-            <p>Na área de saúde, o cenário não é diferente.</p>
-            <p>
-              As Clínicas Digitais são as que estão preparadas para aproveitar
-              as oportunidades que se abrem com todas essas mudanças de mercado
-              e de tecnologia.
+              Nesse e-book GRATUITO da Tô Ricco, te contamos o passo a passo
+              para você se planejar financeiramente e conseguir atingir todos os
+              seus sonhos e objetivos.
             </p>
             <p>
-              Como tirar proveito dessa nova realidade? Como aproveitar as
-              grandes oportunidades desse mundo digital que estamos inseridos?
-            </p>
-            <p>
-              Essas e muitas outras questões serão abordadas a partir de
-              histórias e conceitos de fácil aplicação no dia a dia de qualquer
-              profissional de saúde, embasados na experiência de centenas de
-              clínicas!
+              Vamos falar um pouco sobre Economia, sobre porquê você deveria
+              cuidar da sua vida financeira, quais hábitos são financeiramente
+              positivos e como manter esses hábitos saudáveis no seu dia a dia.
             </p>
           </div>
         </S.MiddlePresentation>
 
         <S.FooterPresentation>
           <div>
-            <h3>O que consta no E-book ?</h3>
+            <h3>Com o E-book da Tô Ricco você vai:</h3>
             <p>
-              O livro foi dividido em 6 partes, que exploram os seguintes
-              aspectos:
+              <img src={Checked} alt="sinal de checado em vender" /> Aprender
+              sobre controle de gastos
             </p>
-            <p>1) Competição, diferenciação e geração de audiência</p>
-            <p>2) Jornada do paciente na era digital</p>
-            <p>3) Interação paciente-serviços e processos fundamentais</p>
-            <p>4) 17 passos para encantar o primeiro paciente</p>
-            <p>5) Processos de manutenção e segurança futura</p>
             <p>
-              6) Cultura, visão, valores e propósito Garanta sua cópia e
-              compartilhe com os amigos!
+              <img src={Checked} alt="sinal de checado em vender" /> Aprender
+              sobre Planejamento Financeiro
+            </p>
+            <p>
+              <img src={Checked} alt="sinal de checado em vender" /> Aprender a
+              estabelecer metas financeiras
+            </p>
+            <p>
+              <img src={Checked} alt="sinal de checado em vender" /> Entender
+              sobre a importância da Educação Financeira
+            </p>
+            <p>
+              <img src={Checked} alt="sinal de checado em vender" /> Aprender a
+              conquistar uma financeira saudável e atingir seus maiores sonhos e
+              objetivos
+            </p>
+            <p>
+              <img src={Checked} alt="sinal de checado em vender" /> Entender
+              mais sobre Finanças Comportamentais e como isso interfere em sua
+              forma de consumir
+            </p>
+            <p>
+              <strong>
+                <br />
+                Tô Ricco é você no controle da sua vida financeira.
+              </strong>
             </p>
           </div>
 

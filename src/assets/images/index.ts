@@ -9,5 +9,6 @@ export { default as LogoFooter } from './LogoFooter.png';
 export { default as IconFace } from './IconFace.png';
 export { default as IconInstagran } from './IconInstagran.png';
 export { default as BGpath } from './Path.png';
+export { default as Checked } from './checked.png';
 
 export { default as BackgroundCard } from './background-card.svg';

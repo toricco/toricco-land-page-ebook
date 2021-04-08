@@ -14,6 +14,9 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
 
+  @media screen and (max-width: 1200px) {
+    padding: 0 5%;
+  }
   @media screen and (max-width: 1070px) {
     justify-content: center;
   }
