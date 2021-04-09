@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import Cookie from 'js-cookie';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Header from '../../components/Header';
 import {
   ebookAndCell,
@@ -40,16 +41,26 @@ const Home = (): JSX.Element => {
 
   const handleSubmit = useCallback(
     async ({ name, email }: FormValues): Promise<void> => {
+      const url =
+        'https://toricco.us1.list-manage.com/subscribe/post?u=526faceb1d0be95fe492dab0a&amp;id=ab7ca52456';
+
       setLoading(true);
       setUserNotFound(false);
 
       const formData = new FormData();
 
-      formData.append('grant_type', 'password');
-      formData.append('scope', 'read write');
-      formData.append('client_id', 'mobile');
-      formData.append('username', name);
-      formData.append('password', email);
+      formData.append('FNAME', name);
+      formData.append('EMAIL', email);
+
+      try {
+        const response = await axios.post(url, formData, {
+          headers: { 'Access-Control-Allow-Origin': '*' },
+        });
+
+        console.log('mailchimp response: ', response);
+      } catch (error) {
+        console.log('mailchimp error: ', error);
+      }
     },
     [],
   );
@@ -185,16 +196,15 @@ const Home = (): JSX.Element => {
               objetivos
             </p>
             <p>
-              <img src={Checked} alt="sinal de checado em vender" /> Entender
-              mais sobre Finanças Comportamentais e como isso interfere em sua
-              forma de consumir
+              O livro foi dividido em 5 partes, que exploram os seguintes
+              aspectos:
             </p>
-            <p>
-              <strong>
-                <br />
-                Tô Ricco é você no controle da sua vida financeira.
-              </strong>
-            </p>
+            <p>1) Entender sobre a importância da Edicação financeira</p>
+            <p>2) Aprender sobre Planejamento Financeiro</p>
+            <p>3) Entender mais sobre</p>
+            <p>4) Aprender a estabelecer metas financeiras</p>
+            <p>5) Aprender sobre controle de gastos</p>
+            <h3>Tô Ricco é você no controle da sua vida financeira.</h3>
           </div>
 
           <S.ImgEbookDigital
