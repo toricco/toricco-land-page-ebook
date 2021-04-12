@@ -195,16 +195,6 @@ const Home = (): JSX.Element => {
               conquistar uma financeira saudável e atingir seus maiores sonhos e
               objetivos
             </p>
-            <p>
-              O livro foi dividido em 5 partes, que exploram os seguintes
-              aspectos:
-            </p>
-            <p>1) Entender sobre a importância da Edicação financeira</p>
-            <p>2) Aprender sobre Planejamento Financeiro</p>
-            <p>3) Entender mais sobre</p>
-            <p>4) Aprender a estabelecer metas financeiras</p>
-            <p>5) Aprender sobre controle de gastos</p>
-            <h3>Tô Ricco é você no controle da sua vida financeira.</h3>
           </div>
 
           <S.ImgEbookDigital
