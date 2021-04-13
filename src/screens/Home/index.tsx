@@ -13,6 +13,7 @@ import {
   IconInstagran,
   Checked,
 } from '../../assets/images';
+import MailForm from '../../components/MailchimpForm';
 import Button from '../../components/Button';
 
 import * as S from './styles';
@@ -41,9 +42,6 @@ const Home = (): JSX.Element => {
 
   const handleSubmit = useCallback(
     async ({ name, email }: FormValues): Promise<void> => {
-      const url =
-        'https://toricco.us1.list-manage.com/subscribe/post?u=526faceb1d0be95fe492dab0a&amp;id=ab7ca52456';
-
       setLoading(true);
       setUserNotFound(false);
 
@@ -52,15 +50,15 @@ const Home = (): JSX.Element => {
       formData.append('FNAME', name);
       formData.append('EMAIL', email);
 
-      try {
-        const response = await axios.post(url, formData, {
-          headers: { 'Access-Control-Allow-Origin': '*' },
-        });
-
-        console.log('mailchimp response: ', response);
-      } catch (error) {
-        console.log('mailchimp error: ', error);
-      }
+      axios
+        .post(url, formData)
+        .then(res => {
+          console.log('thentro do then: res => ', res);
+        })
+        .catch(err => {
+          console.log('catch dentro err: ', err);
+        })
+        .finally(() => setLoading(false));
     },
     [],
   );
@@ -169,6 +167,8 @@ const Home = (): JSX.Element => {
               positivos e como manter esses hábitos saudáveis no seu dia a dia.
             </p>
           </div>
+          <MailForm />
+          {/* <MailchimpSubscribe url="https://toricco.us1.list-manage.com/subscribe/post?u=526faceb1d0be95fe492dab0a&amp;id=ab7ca52456" /> */}
         </S.MiddlePresentation>
 
         <S.FooterPresentation>
