@@ -50,15 +50,15 @@ const Home = (): JSX.Element => {
       formData.append('FNAME', name);
       formData.append('EMAIL', email);
 
-      axios
-        .post(url, formData)
-        .then(res => {
-          console.log('thentro do then: res => ', res);
-        })
-        .catch(err => {
-          console.log('catch dentro err: ', err);
-        })
-        .finally(() => setLoading(false));
+      // axios
+      //   .post(url, formData)
+      //   .then(res => {
+      //     console.log('thentro do then: res => ', res);
+      //   })
+      //   .catch(err => {
+      //     console.log('catch dentro err: ', err);
+      //   })
+      //   .finally(() => setLoading(false));
     },
     [],
   );
