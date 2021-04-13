@@ -3,7 +3,6 @@ import * as Yup from 'yup';
 import Cookie from 'js-cookie';
 import { useCallback, useLayoutEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 import Header from '../../components/Header';
 import {
   ebookAndCell,
@@ -49,16 +48,6 @@ const Home = (): JSX.Element => {
 
       formData.append('FNAME', name);
       formData.append('EMAIL', email);
-
-      // axios
-      //   .post(url, formData)
-      //   .then(res => {
-      //     console.log('thentro do then: res => ', res);
-      //   })
-      //   .catch(err => {
-      //     console.log('catch dentro err: ', err);
-      //   })
-      //   .finally(() => setLoading(false));
     },
     [],
   );
@@ -167,6 +156,7 @@ const Home = (): JSX.Element => {
               positivos e como manter esses hábitos saudáveis no seu dia a dia.
             </p>
           </div>
+          <p>VERSAO APENAS PARA TESTAR ENVIO DO EMAIL</p>
           <MailForm />
           {/* <MailchimpSubscribe url="https://toricco.us1.list-manage.com/subscribe/post?u=526faceb1d0be95fe492dab0a&amp;id=ab7ca52456" /> */}
         </S.MiddlePresentation>
