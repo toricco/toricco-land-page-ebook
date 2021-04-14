@@ -39,7 +39,7 @@ const Home = (): JSX.Element => {
               Como conquistar uma vida financeira saudável
             </S.TitleEbook>
             <S.Description>
-              Em apenas 15 páginas te damos o passo a passo para que você
+              Em apenas 12 páginas te damos o passo a passo para que você
               consiga mudar sua relação com o dinheiro e conquistar estabilidade
               em suas finanças.
               <span>Baixe agora a versão em PDF!</span>
@@ -151,25 +151,36 @@ const Home = (): JSX.Element => {
           <div>
             <h3>Com o E-book da Tô Ricco você vai:</h3>
             <p>
-              <img src={Checked} alt="sinal de checado em vender" /> Aprender
+              <img src={Checked} alt="sinal de checado em verde" /> Aprender
               sobre controle de gastos
             </p>
             <p>
-              <img src={Checked} alt="sinal de checado em vender" /> Aprender
+              <img src={Checked} alt="sinal de checado em verde" /> Aprender
               sobre Planejamento Financeiro
             </p>
             <p>
-              <img src={Checked} alt="sinal de checado em vender" /> Aprender a
+              <img src={Checked} alt="sinal de checado em verde" /> Aprender a
               estabelecer metas financeiras
             </p>
             <p>
-              <img src={Checked} alt="sinal de checado em vender" /> Entender
+              <img src={Checked} alt="sinal de checado em verde" /> Entender
               sobre a importância da Educação Financeira
             </p>
             <p>
-              <img src={Checked} alt="sinal de checado em vender" /> Aprender a
+              <img src={Checked} alt="sinal de checado em verde" /> Aprender a
               conquistar uma financeira saudável e atingir seus maiores sonhos e
               objetivos
+            </p>
+            <p>
+              <img src={Checked} alt="sinal de checado em verde" /> Entender
+              mais sobre Finanças Comportamentais e como ela interfere em sua
+              forma de consumir
+            </p>
+            <p>
+              <strong>
+                <br />
+                Tô Ricco é você no controle da sua vida financeira.
+              </strong>
             </p>
           </div>
 
