@@ -42,7 +42,7 @@ export const PresentationContainer = styled.section`
 export const Presentation = styled.div`
   width: 600px;
   position: relative;
-  z-index: 999;
+  z-index: 99;
 
   @media screen and (max-width: 1070px) {
     flex-direction: column;
@@ -210,9 +210,10 @@ export const InputError = styled.span`
   margin-left: 2.4rem;
   font-size: 1.5rem;
   color: #d97f86;
+  text-align: left;
 `;
 
-export const ErrorUserNotFound = styled.span`
+export const Error = styled.span`
   display: block;
   text-align: center;
   margin-top: 0.8rem;

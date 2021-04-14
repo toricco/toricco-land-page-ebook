@@ -1,8 +1,7 @@
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import Cookie from 'js-cookie';
-import { useCallback, useLayoutEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import MailchimpSubscribe from 'react-mailchimp-subscribe';
+import { useState } from 'react';
 import Header from '../../components/Header';
 import {
   ebookAndCell,
@@ -12,49 +11,22 @@ import {
   IconInstagran,
   Checked,
 } from '../../assets/images';
-import MailForm from '../../components/MailchimpForm';
 import Button from '../../components/Button';
+import { Modal } from '../../components/Modal';
 
 import * as S from './styles';
-
-interface FormValues {
-  name: string;
-  email: string;
-}
 
 const validationForm = Yup.object().shape({
   name: Yup.string().required('Nome obrigatório'),
   email: Yup.string().email('E-mail inválido').required('E-mail obrigatório'),
 });
 
+const url =
+  'https://toricco.us1.list-manage.com/subscribe/post?u=526faceb1d0be95fe492dab0a&amp;id=ab7ca52456';
+
 const Home = (): JSX.Element => {
-  const [loading, setLoading] = useState(false);
-  const [userNotFound, setUserNotFound] = useState(false);
+  const [modal, setModal] = useState(false);
 
-  const history = useHistory();
-
-  useLayoutEffect(() => {
-    const findCookie = Cookie.get('toricco-token');
-
-    if (findCookie) Cookie.remove('toricco-token');
-  }, [history]);
-
-  const handleSubmit = useCallback(
-    async ({ name, email }: FormValues): Promise<void> => {
-      setLoading(true);
-      setUserNotFound(false);
-
-      const formData = new FormData();
-
-      formData.append('FNAME', name);
-      formData.append('EMAIL', email);
-    },
-    [],
-  );
-
-  const handleInputFocus = useCallback(() => {
-    setUserNotFound(false);
-  }, []);
   return (
     <>
       <Header />
@@ -82,57 +54,74 @@ const Home = (): JSX.Element => {
               <h3>Preencha o formulário abaixo para receber o material</h3>
               <Formik
                 initialValues={{ name: '', email: '' }}
-                onSubmit={handleSubmit}
+                onSubmit={() => console.log('')}
                 validationSchema={validationForm}
               >
                 {({ values, errors, touched }) => (
                   <Form>
-                    <S.InputContainer
-                      isFilled={values.name.length !== 0}
-                      hasError={(!!errors.name && touched.name) || userNotFound}
-                    >
-                      <S.Label htmlFor="name">Nome</S.Label>
-                      <S.Input
-                        id="name"
-                        type="name"
-                        name="name"
-                        onFocus={handleInputFocus}
-                      />
-                    </S.InputContainer>
+                    <MailchimpSubscribe<{ EMAIL: string; NAME: string }>
+                      url={url}
+                      render={({ subscribe, status }) => (
+                        <>
+                          <S.InputContainer
+                            isFilled={values.name.length !== 0}
+                            hasError={!!errors.name && touched.name}
+                          >
+                            <S.Label htmlFor="name">Nome</S.Label>
+                            <S.Input type="text" name="name" />
+                          </S.InputContainer>
 
-                    <ErrorMessage name="name" component={S.InputError} />
+                          <ErrorMessage name="name" component={S.InputError} />
 
-                    <S.InputContainer
-                      isFilled={values.email.length !== 0}
-                      hasError={
-                        (!!errors.email && touched.email) || userNotFound
-                      }
-                    >
-                      <S.Label htmlFor="password">E-mail</S.Label>
+                          <S.InputContainer
+                            isFilled={values.email.length !== 0}
+                            hasError={!!errors.email && touched.email}
+                          >
+                            <S.Label htmlFor="password">E-mail</S.Label>
 
-                      <S.Input
-                        id="email"
-                        type="email"
-                        name="email"
-                        onFocus={handleInputFocus}
-                      />
-                    </S.InputContainer>
+                            <S.Input type="email" name="email" />
+                          </S.InputContainer>
 
-                    <ErrorMessage name="email" component={S.InputError} />
+                          <ErrorMessage name="email" component={S.InputError} />
 
-                    {userNotFound && (
-                      <S.ErrorUserNotFound>
-                        Nome ou E-mail inválidos
-                      </S.ErrorUserNotFound>
-                    )}
+                          <Button
+                            style={{ marginTop: '4rem' }}
+                            type="submit"
+                            isLoading={status === 'sending'}
+                            onClick={() => {
+                              if (!errors.email && touched.email) {
+                                subscribe({
+                                  EMAIL: values.email,
+                                  NAME: values.name,
+                                });
 
-                    <Button
-                      style={{ marginTop: '4rem' }}
-                      type="submit"
-                      isLoading={loading}
-                    >
-                      Quero receber o e-book
-                    </Button>
+                                setModal(false);
+                              }
+                            }}
+                          >
+                            Quero receber o e-book
+                          </Button>
+
+                          {status === 'error' && !modal && (
+                            <Modal
+                              handleClick={() => setModal(true)}
+                              title="Erro ao inscrever"
+                              subTitle="Verifique se o email já não foi utilizado ou tente novamente mais tarde."
+                              visibleButton
+                            />
+                          )}
+
+                          {status === 'success' && !modal && (
+                            <Modal
+                              handleClick={() => setModal(true)}
+                              title="Sucesso!"
+                              subTitle='Enviamos o e-book para o seu email. Caso não o encontre, verifique o spam ou a aba de "Promoções".'
+                              visibleButton
+                            />
+                          )}
+                        </>
+                      )}
+                    />
                   </Form>
                 )}
               </Formik>
@@ -156,9 +145,6 @@ const Home = (): JSX.Element => {
               positivos e como manter esses hábitos saudáveis no seu dia a dia.
             </p>
           </div>
-          <p>VERSAO APENAS PARA TESTAR ENVIO DO EMAIL</p>
-          <MailForm />
-          {/* <MailchimpSubscribe url="https://toricco.us1.list-manage.com/subscribe/post?u=526faceb1d0be95fe492dab0a&amp;id=ab7ca52456" /> */}
         </S.MiddlePresentation>
 
         <S.FooterPresentation>
